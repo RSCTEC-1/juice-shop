@@ -27,6 +27,5 @@ jobs:
             SCAN_NAME: ${{ vars.SCAN_NAME }}
             SCAN_TYPE: ${{ vars.SCAN_TYPE }}
             AUTH_RECORD: none
-            FAIL_ON_SCAN_ERROR: false
 
 
