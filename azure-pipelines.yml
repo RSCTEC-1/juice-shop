@@ -1,31 +1,7 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
-trigger:
-- master
-
-resources:
-- repo: self
-
-variables:
-  tag: '$(Build.BuildId)'
-
-stages:
-- stage: Build
-  displayName: Build image
-  jobs:
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: build
-        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
-        tags: |
-          $(tag)
-
-
+- task: QualysWASConnector@7
+  inputs:
+    webApplication: '907702461-Juice Shop'
+    scanType: 'VULNERABILITY'
+    dataCheckFrequency: '5'
+    waitTimeforScanResult: '60*24'
+    WasService: 'QualysWAS'
