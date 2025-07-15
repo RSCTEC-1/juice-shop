@@ -1,27 +1,23 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- master
+  - master
 
 pool:
-  vmImage: ubuntu-latest
+  name: Windows  # Your custom agent pool name
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  - script: echo Hello, world!
+    displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - script: |
+      echo Add other tasks to build, test, and deploy your project.
+      echo See https://aka.ms/yaml
+    displayName: 'Run a multi-line script'
 
-- task: QualysWASConnector@7
-  inputs:
-    webApplication: '907702461-Juice Shop'
-    scanType: 'VULNERABILITY'
-    dataCheckFrequency: '5'
-    waitTimeforScanResult: '60*24'
-    WasService: 'QualysWAS'
+  - task: QualysWASConnector@7
+    displayName: 'Run Qualys WAS Scan'
+    inputs:
+      webApplication: '907702461-Juice Shop'
+      scanType: 'VULNERABILITY'
+      dataCheckFrequency: '5'
+      waitTimeForScanResult: '60*24'
+      WasService: 'QualysWAS'
