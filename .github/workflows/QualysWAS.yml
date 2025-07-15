@@ -26,27 +26,18 @@ jobs:
           WEBAPP_ID: ${{ vars.WEBAPP_ID }}
           SCAN_NAME: ${{ vars.SCAN_NAME }}
           SCAN_TYPE: ${{ vars.SCAN_TYPE }}
-          AUTH_RECORD: ${{ vars.AUTH_RECORD }}
-          AUTH_RECORD_ID: ${{ vars.AUTH_RECORD_ID }}
-          OPTION_PROFILE: ${{ vars.OPTION_PROFILE }}
-          OPTION_PROFILE_ID: ${{ vars.OPTION_PROFILE_ID }}
-          CANCEL_OPTION: ${{ vars.CANCEL_OPTION }}
-          CANCEL_HOURS: ${{ vars.CANCEL_HOURS }}
-          SEVERITY_CHECK: ${{ vars.SEVERITY_CHECK }}
-          SEVERITY_LEVEL: ${{ vars.SEVERITY_LEVEL }}
-          EXCLUDE: ${{ vars.EXCLUDE }}
-          FAIL_ON_SCAN_ERROR: ${{ vars.FAIL_ON_SCAN_ERROR }}
-          WAIT_FOR_RESULT: ${{ vars.WAIT_FOR_RESULT }}
-          INTERVAL: ${{ vars.INTERVAL }}
-          TIMEOUT: ${{ vars.TIMEOUT }}
-          FILE_TYPE: ${{ vars.FILE_TYPE }}
+          AUTH_RECORD: none
+          OPTION_PROFILE: useDefault
+          FAIL_ON_SCAN_ERROR: false
+          WAIT_FOR_RESULT: true
+          FILE_TYPE: PDF
 
       - name: Debug output directory
         run: |
           echo "Listing output files..."
           ls -l ./outputs || echo "No output directory found"
 
-      - name: Upload Qualys WAS Scan Result
+      - name: Upload Scan Result
         uses: actions/upload-artifact@v4
         with:
           name: Qualys_WAS_Scan_Result
