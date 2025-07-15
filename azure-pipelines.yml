@@ -1,7 +1,15 @@
-- task: QualysWASConnector@7
-  inputs:
-    webApplication: '907702461-Juice Shop'
-    scanType: 'VULNERABILITY'
-    dataCheckFrequency: '5'
-    waitTimeforScanResult: '60*24'
-    WasService: 'QualysWAS'
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: QualysWASConnector@7
+    inputs:
+      webApplication: '907702461-Juice.Shop'
+      scanType: 'VULNERABILITY'
+      dataCheckFrequency: '35'
+      waitTimeForScanResult: '60*24'
+      WasService: 'QualysWAS'
+
