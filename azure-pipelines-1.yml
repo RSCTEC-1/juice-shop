@@ -2,7 +2,7 @@ trigger:
   - master
 
 pool:
-  name: Windows  # Your custom agent pool name
+  name: Default  # Your custom agent pool name
 
 steps:
   - script: echo Hello, world!
