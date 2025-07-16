@@ -31,15 +31,3 @@ jobs:
           FAIL_ON_SCAN_ERROR: false
           WAIT_FOR_RESULT: true
           FILE_TYPE: PDF
-
-      - name: Debug output directory
-        run: |
-          echo "Listing output files..."
-          ls -l ./outputs || echo "No output directory found"
-
-      - name: Upload Scan Result
-        uses: actions/upload-artifact@v4
-        with:
-          name: Qualys_WAS_Scan_Result
-          path: ./outputs/
-          if-no-files-found: warn
